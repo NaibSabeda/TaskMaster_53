@@ -1,10 +1,10 @@
 # TaskMaster  
 轻量开源的Python任务管理工具，支持任务增删改查、优先级标记、到期提醒功能，专为个人/小团队打造，追求简洁与易用性。  
 
-![License](https://img.shields.io/github/license/你的GitHub用户名/TaskMaster_99)
+![License](https://img.shields.io/github/license/NaibSabeda/TaskMaster_53)
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
-![Stars](https://img.shields.io/github/stars/你的GitHub用户名/TaskMaster_99?style=social)
-![Issues](https://img.shields.io/github/issues/你的GitHub用户名/TaskMaster_99)
+![Stars](https://img.shields.io/github/stars/NaibSabeda/TaskMaster_53?style=social)
+![Issues](https://img.shields.io/github/issues/NaibSabeda/TaskMaster_53)
 
 ## 快速开始  
 ### 环境要求  
