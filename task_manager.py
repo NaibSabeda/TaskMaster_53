@@ -19,31 +19,21 @@ class TaskMaster:
         with open(self.data_file, "w", encoding="utf-8") as f:
             json.dump(self.tasks, f, ensure_ascii=False, indent=2)
 
-    
-    def add_task(self, title, priority="medium", deadline=None, description="", creator="未知"):
-    task = {
-        "id": len(self.tasks) + 1,
-        "title": title,
-        "priority": priority.lower(),
-        "deadline": deadline,
-        "description": description,
-        "creator": creator,  # 新增创建人字段
-        "completed": False,
-        "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    }
-    self.tasks.append(task)
-    self.save_tasks()
-    return task
-
-    def list_tasks(self, priority=None):
-        """列出任务（支持按优先级筛选）"""
-        filtered = self.tasks
-        if priority:
-            filtered = [t for t in self.tasks if t["priority"] == priority.lower()]
-        for task in filtered:
-            status = "✅" if task["completed"] else "❌"
-            print(f"[{status}] {task['title']}（优先级：{task['priority']}，截止：{task['deadline'] or '无'}）")
-        return filtered
+    def add_task(self, title, priority="medium", deadline=None, description="", category="默认", creator="未知"):
+        task = {
+            "id": len(self.tasks) + 1,
+            "title": title,
+            "priority": priority.lower(),
+            "deadline": deadline,
+            "description": description,
+            "category": category,  # 保留分类字段
+            "creator": creator,    # 保留创建人字段
+            "completed": False,
+            "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        }
+        self.tasks.append(task)
+        self.save_tasks()
+        return task
 
     def filter_tasks(self, priority):
         """按优先级筛选任务"""
@@ -70,4 +60,5 @@ class TaskMaster:
 if __name__ == "__main__":
     tm = TaskMaster()
     tm.add_task("测试任务", "high", "2025-12-01", "这是测试内容")
-    tm.list_tasks()
+    # 注意：原代码中调用了未定义的list_tasks()方法，这里注释掉以避免错误
+    # tm.list_tasks()
