@@ -19,20 +19,21 @@ class TaskMaster:
         with open(self.data_file, "w", encoding="utf-8") as f:
             json.dump(self.tasks, f, ensure_ascii=False, indent=2)
 
-    def add_task(self, title, priority="medium", deadline=None, description=""):
-        """添加新任务"""
-        task = {
-            "id": len(self.tasks) + 1,
-            "title": title,
-            "priority": priority.lower(),
-            "deadline": deadline,
-            "description": description,
-            "completed": False,
-            "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        }
-        self.tasks.append(task)
-        self.save_tasks()
-        return task
+    
+    def add_task(self, title, priority="medium", deadline=None, description="", creator="未知"):
+    task = {
+        "id": len(self.tasks) + 1,
+        "title": title,
+        "priority": priority.lower(),
+        "deadline": deadline,
+        "description": description,
+        "creator": creator,  # 新增创建人字段
+        "completed": False,
+        "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
+    self.tasks.append(task)
+    self.save_tasks()
+    return task
 
     def list_tasks(self, priority=None):
         """列出任务（支持按优先级筛选）"""
